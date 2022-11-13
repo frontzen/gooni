@@ -1,0 +1,65 @@
+{
+  "name": "@front.zen/mui",
+  "version": "1.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "main": "dist/index.common.js",
+  "module": "dist/index.module.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "start": "vite build --mode=development --watch",
+    "build": "vite build",
+    "test": "vitest",
+    "type-check": "yarn run -T tsc",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "chromatic": "chromatic --exit-zero-on-changes"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.9.0",
+    "@mui/lab": "^5.0.0-alpha.91",
+    "@mui/material": "^5.9.1",
+    "@mui/x-date-pickers": "^5.0.0-beta.1",
+    "popper.js": "1.16.0",
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
+  },
+  "devDependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/lab": "^5.0.0-alpha.91",
+    "@mui/material": "^5.9.1",
+    "@mui/x-date-pickers": "^5.0.0-beta.1",
+    "@storybook/addon-essentials": "^6.5.5",
+    "@storybook/addon-info": "^5.3.21",
+    "@storybook/addon-links": "^6.5.5",
+    "@storybook/addons": "^6.5.5",
+    "@storybook/builder-vite": "^0.2.0",
+    "@storybook/preset-create-react-app": "^4.1.1",
+    "@storybook/react": "^6.5.5",
+    "@types/react-resize-detector": "^6.1.0",
+    "chromatic": "^6.5.4",
+    "happy-dom": "^6.0.2",
+    "jest-environment-jsdom": "^27.0.6",
+    "jest-mock-extended": "^2.0.4",
+    "popper.js": "1.16.1",
+    "react-scripts": "5.0.0",
+    "resize-observer-polyfill": "^1.5.1",
+    "stylis-plugin-rtl": "^2.1.1"
+  },
+  "dependencies": {
+    "@date-io/date-fns": "^2.14.0",
+    "@date-io/date-fns-jalali": "^2.14.0",
+    "@front.zen/react": "^1.0.0",
+    "@front.zen/utils": "^1.0.0",
+    "react-resize-detector": "^7.1.2",
+    "tss-react": "^3.3.2"
+  }
+}

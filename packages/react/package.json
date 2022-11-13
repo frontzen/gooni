@@ -1,0 +1,31 @@
+{
+  "name": "@front.zen/react",
+  "version": "1.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "main": "dist/index.common.js",
+  "module": "dist/index.module.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "start": "vite build --mode=development --watch",
+    "build": "vite build",
+    "test": "vitest",
+    "type-check": "yarn run -T tsc"
+  },
+  "devDependencies": {
+    "@front.zen/utils": "^1.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
+  },
+  "dependencies": {
+    "@react-stately/utils": "^3.2.1"
+  }
+}
