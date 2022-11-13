@@ -1,6 +1,6 @@
 <p align="center"><img src="static/sack.jpg" width="80%"/></p>
 
-<h1 align="center">Gooni UI Tools</h1>
+<h1  align="center">Gooni UI Tools</h1>
 
 Gooni is a set of React components and utility functions, which are developed and maintained by frontzen members.
 
