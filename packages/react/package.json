@@ -13,9 +13,6 @@
     "src"
   ],
   "scripts": {
-    "format": "prettier --ignore-path ../../.prettierignore --config ../../.prettierrc --write  \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "format:check": "prettier --ignore-path ../../.prettierignore --config ../../.prettierrc --check \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "lint": "eslint --max-warnings=0 \"**/*.{js,jsx,ts,tsx}\"",
     "dev": "vite build --mode=development --watch",
     "build": "vite build",
     "test": "vitest --run",
