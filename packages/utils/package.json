@@ -13,9 +13,9 @@
     "src"
   ],
   "scripts": {
-    "start": "vite build --mode=development --watch",
+    "dev": "vite build --mode=development --watch",
     "build": "vite build",
-    "test": "vitest",
+    "test": "vitest --run",
     "type-check": "yarn run -T tsc"
   },
   "devDependencies": {
