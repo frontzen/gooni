@@ -8,16 +8,22 @@
     "lint": {
       "outputs": []
     },
+    "format": {
+      "outputs": []
+    },
+    "format:check": {
+      "outputs": []
+    },
     "type-check": {
+      "dependsOn": ["build"],
       "outputs": []
     },
     "test": {
-      "outputs": []
-    },
-    "dev": {
+      "dependsOn": ["build"],
       "outputs": []
     },
     "storybook": {
+      "dependsOn": ["build"],
       "outputs": []
     }
   }
