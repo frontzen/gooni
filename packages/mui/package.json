@@ -13,9 +13,12 @@
     "src"
   ],
   "scripts": {
-    "start": "vite build --mode=development --watch",
+    "format": "prettier --ignore-path ../../.prettierignore --config ../../.prettierrc --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "format:check": "prettier --ignore-path ../../.prettierignore --config ../../.prettierrc --check \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "lint": "eslint --max-warnings=0 \"**/*.{js,jsx,ts,tsx}\"",
+    "dev": "vite build --mode=development --watch",
     "build": "vite build",
-    "test": "vitest",
+    "test": "vitest --run",
     "type-check": "yarn run -T tsc",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
