@@ -5,13 +5,13 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
-    "lint": {
+    "//#workspace:lint": {
       "outputs": []
     },
-    "format": {
+    "//#workspace:format": {
       "outputs": []
     },
-    "format:check": {
+    "//#workspace:format:check": {
       "outputs": []
     },
     "type-check": {

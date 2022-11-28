@@ -26,6 +26,5 @@ jobs:
           node-version: '16'
           cache: 'yarn'
       - run: yarn install
-      - run: yarn deduplicate:check
       - run: yarn prepublishOnly
       - run: yarn type-check

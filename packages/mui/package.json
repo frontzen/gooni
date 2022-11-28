@@ -13,16 +13,12 @@
     "src"
   ],
   "scripts": {
-    "format": "prettier --ignore-path ../../.prettierignore --config ../../.prettierrc --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "format:check": "prettier --ignore-path ../../.prettierignore --config ../../.prettierrc --check \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "lint": "eslint --max-warnings=0 \"**/*.{js,jsx,ts,tsx}\"",
-    "dev": "vite build --mode=development --watch",
-    "build": "vite build",
-    "test": "vitest --run",
+    "dev": "yarn run -T vite build --mode=development --watch",
+    "build": "yarn run -T vite build",
+    "test": "yarn run -T vitest --run",
     "type-check": "yarn run -T tsc",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "chromatic": "chromatic --exit-zero-on-changes"
+    "build-storybook": "build-storybook"
   },
   "peerDependencies": {
     "@emotion/react": "^11.9.0",
@@ -48,7 +44,6 @@
     "@storybook/preset-create-react-app": "^4.1.1",
     "@storybook/react": "^6.5.5",
     "@types/react-resize-detector": "^6.1.0",
-    "chromatic": "^6.5.4",
     "happy-dom": "^6.0.2",
     "jest-environment-jsdom": "^27.0.6",
     "jest-mock-extended": "^2.0.4",
