@@ -21,3 +21,4 @@ export {
   type ToggleAbleStateOptions,
   type ToggleAbleStateReturn,
 } from './hooks/use-toggleAble-state';
+export * from './IsolatedComponent';

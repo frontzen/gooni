@@ -48,7 +48,7 @@
     "version": "changeset add && changeset version",
     "prepare": "husky install",
     "prepublishOnly": "yarn format:check && yarn lint && yarn build && yarn test",
-    "dev": "turbo run dev",
+    "dev": "yarn workspaces foreach -Ap run dev",
     "format": "turbo run workspace:format",
     "format:check": "turbo run workspace:format:check",
     "lint": "turbo run workspace:lint",
