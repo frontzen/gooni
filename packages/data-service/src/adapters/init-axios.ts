@@ -1,11 +1,14 @@
 /// <reference path="./rest.d.ts" />
 import { AxiosInstance } from 'axios';
-import { initClientAdapter } from '../adapter';
+import { initAdapterClient } from '../adapter';
 
-export const initAxiosClient = (api: AxiosInstance) =>
-  initClientAdapter(
-    (method, url, variables) => {
-      return api({ method, url, params: variables.query, data: variables.body }).then((x) => x.data);
+export const initAxiosAdapter = (api: AxiosInstance) =>
+  initAdapterClient(
+    async (method, url, inputs) => {
+      const summaryKey = ['get', 'delete'].includes(method) ? 'query' : 'body';
+      const fullInputs: typeof inputs = inputs.query || inputs.body ? inputs : { [summaryKey]: inputs };
+      const res = await api({ method, url, params: fullInputs.query, data: fullInputs.body });
+      return res.data;
     },
     { query: 'get', mutate: 'post' },
   );

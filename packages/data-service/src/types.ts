@@ -32,8 +32,8 @@ export type Service<
 };
 
 export type FullParameters<S extends AnyService> = S['TemplateParams'] extends void
-  ? [inputParams: S['Inputs']]
-  : [templateParams: S['TemplateParams'], inputParams: S['Inputs']];
+  ? [adapterInputs: S['Inputs']]
+  : [templateParams: S['TemplateParams'], adapterInputs: S['Inputs']];
 
 export type AnyService = Service<string, any, any, object>;
 

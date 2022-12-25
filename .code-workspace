@@ -11,10 +11,14 @@
     },
     {
       "path": "./packages/mui"
+    },
+    {
+      "path": "./packages/data-service"
     }
   ],
   "settings": {
-    "vitest.commandLine": "yarn --cwd=${fileWorkspaceFolder} test"
+    "vitest.commandLine": "yarn --cwd=${fileWorkspaceFolder} test",
+    "testing.automaticallyOpenPeekView": "never"
   },
   "launch": {
     "version": "0.2.0",

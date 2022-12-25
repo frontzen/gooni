@@ -10,8 +10,8 @@ const defaultQueryFn = <S extends AnyQueryService>(context: QueryFunctionContext
     throw new Error(`default query function called by unsupported params. url=${service} variables=${parameters}`);
   }
 
-  const [method, url] = serviceToAdapterArgs(service, ...parameters);
-  return client(method, url, parameters);
+  const [method, url, adapterInputs] = serviceToAdapterArgs(service, ...parameters);
+  return client(method, url, adapterInputs, context);
 };
 
 export const queryClientConfig: QueryClientConfig = {

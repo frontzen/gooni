@@ -3,25 +3,29 @@ import { createQueryService, createService, queryKeyGen, serviceToClientArgs } f
 
 describe('serviceToClientArgs', () => {
   describe('inject template params', () => {
-    const generateService = createService<void, {}>('', 'get');
+    const generateService = createService<null, {}>('', 'get');
 
     it('should return correct result with no template param', () => {
-      const result = serviceToClientArgs(generateService('/posts'));
+      const result = serviceToClientArgs(generateService('/posts'), null);
       expect(result[1]).toEqual('/posts');
     });
     it('should return correct result with template params', () => {
-      const result = serviceToClientArgs(generateService('/posts/{id:number}'), { id: 2 });
+      const result = serviceToClientArgs(generateService('/posts/{id:number}'), { id: 2 }, null);
       expect(result[1]).toEqual('/posts/2');
     });
     it('should return correct result with a result that has just params', () => {
-      const result = serviceToClientArgs(generateService('/{id:number}/{name}'), { id: 2, name: 'John' });
+      const result = serviceToClientArgs(generateService('/{id:number}/{name}'), { id: 2, name: 'John' }, null);
       expect(result[1]).toEqual('/2/John');
     });
     it('should return correct result with a result that contains multiple params', () => {
-      const result = serviceToClientArgs(generateService('/posts/{postId:number}/user/{name}'), {
-        postId: 2,
-        name: 'John',
-      });
+      const result = serviceToClientArgs(
+        generateService('/posts/{postId:number}/user/{name}'),
+        {
+          postId: 2,
+          name: 'John',
+        },
+        null,
+      );
       expect(result[1]).toEqual('/posts/2/user/John');
     });
   });
@@ -41,17 +45,20 @@ describe('serviceToClientArgs', () => {
     const generateService = createService('', 'get');
 
     it('should return correct result with no template param', () => {
-      const result = serviceToClientArgs(generateService('/posts'), [{ foo: '' }]);
-      expect(result).toEqual(['get', '/posts', [{ foo: '' }]]);
+      const result = serviceToClientArgs(generateService('/posts'), [1, 2]);
+      expect(result).toEqual(['get', '/posts', [1, 2]]);
     });
     it('should return correct result with no template param', () => {
       const result = serviceToClientArgs(generateService('/posts/{id:number}'), { id: 5 }, { foo: '' });
-      expect(result).toEqual(['get', '/posts/5', [{ foo: '' }]]);
+      expect(result).toEqual(['get', '/posts/5', { foo: '' }]);
     });
   });
 });
 
-describe('examples of createService and queryKeyGen (type-checking)', () => {
+/**
+ * examples of createService and queryKeyGen (type-checking)
+ */
+const queryKeyGenExamples = () => {
   interface IResponse {}
   type IQueryParams = { a: string };
   interface IBodyInput {}
@@ -70,7 +77,8 @@ describe('examples of createService and queryKeyGen (type-checking)', () => {
   queryKeyGen(myService3, [undefined, {}]);
   queryKeyGen(myService4, { body: {} });
 
-  useQueryService(myService1, [{ id: '' }, { query: { a: '' }, body: {} }], {
-    enabled: false,
-  });
-});
+  const useServiceQuery = () =>
+    useQueryService(myService1, [{ id: '' }, { query: { a: '' }, body: {} }], {
+      enabled: false,
+    });
+};

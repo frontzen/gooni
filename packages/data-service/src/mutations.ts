@@ -8,7 +8,7 @@ export function useMutationService<S extends AnyMutateService>(
   options?: Omit<UseMutationOptions<S['Response'], unknown, FullParameters<S>, unknown>, 'mutationFn'>,
 ) {
   return useMutation((parameters: FullParameters<S>) => {
-    const [method, url] = serviceToClientArgs(service, ...parameters);
-    return client(method, url, parameters);
+    const [method, url, adapterInputs] = serviceToClientArgs(service, ...parameters);
+    return client(method, url, adapterInputs);
   }, options);
 }
