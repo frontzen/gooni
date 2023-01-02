@@ -1,5 +1,5 @@
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
-import { client } from './adapter';
+import { clientAdapter } from './adapter';
 import { AnyMutateService, FullParameters } from './types';
 import { serviceToClientArgs } from './utils';
 
@@ -9,6 +9,6 @@ export function useMutationService<S extends AnyMutateService>(
 ) {
   return useMutation((parameters: FullParameters<S>) => {
     const [method, url, adapterInputs] = serviceToClientArgs(service, ...parameters);
-    return client(method, url, adapterInputs);
+    return clientAdapter(method, url, adapterInputs);
   }, options);
 }

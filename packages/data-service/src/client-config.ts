@@ -1,5 +1,5 @@
 import { QueryClientConfig, QueryFunction, QueryFunctionContext } from '@tanstack/react-query';
-import { client } from './adapter';
+import { clientAdapter } from './adapter';
 import { AnyQueryService, FullParameters } from './types';
 import { serviceToClientArgs as serviceToAdapterArgs } from './utils';
 
@@ -11,7 +11,7 @@ const defaultQueryFn = <S extends AnyQueryService>(context: QueryFunctionContext
   }
 
   const [method, url, adapterInputs] = serviceToAdapterArgs(service, ...parameters);
-  return client(method, url, adapterInputs, context);
+  return clientAdapter(method, url, adapterInputs, context);
 };
 
 export const queryClientConfig: QueryClientConfig = {

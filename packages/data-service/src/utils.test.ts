@@ -31,11 +31,11 @@ describe('serviceToClientArgs', () => {
   });
 
   describe('extract methods', () => {
-    it('should return correct result with no template param', () => {
+    it('should extract correctly without baseUrl', () => {
       const result = serviceToClientArgs(createService('', 'get')('/posts'), []);
       expect(result).toEqual(['get', '/posts', []]);
     });
-    it('should return correct result with template params', () => {
+    it('should extract correctly with baseUrl', () => {
       const result = serviceToClientArgs(createService('baseUrl', 'del')('/posts'), []);
       expect(result).toEqual(['del', 'baseUrl/posts', []]);
     });
@@ -44,11 +44,11 @@ describe('serviceToClientArgs', () => {
   describe('extracting inputs', () => {
     const generateService = createService('', 'get');
 
-    it('should return correct result with no template param', () => {
+    it('should extract inputParams without templateParam', () => {
       const result = serviceToClientArgs(generateService('/posts'), [1, 2]);
       expect(result).toEqual(['get', '/posts', [1, 2]]);
     });
-    it('should return correct result with no template param', () => {
+    it('should extract inputParams with templateParam', () => {
       const result = serviceToClientArgs(generateService('/posts/{id:number}'), { id: 5 }, { foo: '' });
       expect(result).toEqual(['get', '/posts/5', { foo: '' }]);
     });
@@ -68,13 +68,13 @@ const queryKeyGenExamples = () => {
     '',
     'post',
   )('/posts/{id}');
-  const myService3 = createService<[void, IBodyInput], IResponse>('', 'put')('/posts');
+  const myService3 = createService<[null, IBodyInput], IResponse>('', 'put')('/posts');
   const myService4 = createService<{ body: IBodyInput }, IResponse>('', 'put')('/posts');
 
   queryKeyGen(myService1, { id: '' }, { query: { a: '' }, body: {} });
   queryKeyGen(myService2, { id: '' }, { query: { a: '' } });
   queryKeyGen(myService2, { id: '' }, [{ a: '' }]);
-  queryKeyGen(myService3, [undefined, {}]);
+  queryKeyGen(myService3, [null, {}]);
   queryKeyGen(myService4, { body: {} });
 
   const useServiceQuery = () =>

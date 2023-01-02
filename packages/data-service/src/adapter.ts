@@ -11,7 +11,7 @@ export type MethodTypes = Adapter extends { MethodTypes: infer U } ? U : string;
 export type QueryInputShape = Adapter extends { QueryInputShape: infer U } ? U : {};
 export type MutateInputShape = Adapter extends { MutateInputShape: infer U } ? U : {};
 
-interface AdapterClient<MethodTypes extends string = string> {
+interface ClientAdapter {
   <S extends AnyService>(
     method: MethodTypes,
     service: S,
@@ -22,13 +22,13 @@ interface AdapterClient<MethodTypes extends string = string> {
 
 type DefaultMethods = Record<'query' | 'mutate', MethodTypes>;
 
-export let client: AdapterClient = () => {
+export let clientAdapter: ClientAdapter = () => {
   throw new Error('using data-service before initializing its adapter');
 };
 
 export let defaultMethods: DefaultMethods;
 
-export function initAdapterClient(adapterClient: AdapterClient, methods: DefaultMethods) {
-  client = adapterClient;
+export function initClientAdapter(_clientAdapter: ClientAdapter, methods: DefaultMethods) {
+  clientAdapter = _clientAdapter;
   defaultMethods = methods;
 }
