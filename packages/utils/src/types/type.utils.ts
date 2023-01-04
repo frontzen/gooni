@@ -18,10 +18,7 @@ export type NonNilArray<A> = A extends (infer V | Nil)[] ? V[] : A;
  * @type EnrichedArray
  * @example EnrichedArray<[{a: 1}], {b: 2}> -> [{a: 1, b: 2}]
  */
-export type EnrichedArray<
-  Array extends any[],
-  Enrichment = {},
-> = Array extends (infer V)[]
+export type EnrichedArray<Array extends any[], Enrichment = {}> = Array extends (infer V)[]
   ? (V extends null ? null : V & Enrichment)[]
   : never;
 
@@ -38,8 +35,7 @@ export type ArrayItem<T extends any[]> = T extends (infer V)[] ? V : never;
  * @type ReadonlyArrayItem<T> accepts a readonly array type and returns the type of array items
  * @example ReadonlyArray<ReadonlyArray<string>> -> string
  */
-export type ReadonlyArrayItem<T extends ReadonlyArray<any>> =
-  T extends ReadonlyArray<infer V> ? V : never;
+export type ReadonlyArrayItem<T extends ReadonlyArray<any>> = T extends ReadonlyArray<infer V> ? V : never;
 
 // ────────────────────────────────────────────────────────────────────────────────
 
@@ -60,17 +56,16 @@ export type NullableProps<T> = { [P in keyof T]: T[P] | null };
 /**
  * @type WithNullableKeys make some keys nullable
  */
-export type WithNullableKeys<T, K extends keyof T> = Omit<T, K> &
-  NullableProps<Pick<T, K>>;
+export type WithNullableKeys<T, K extends keyof T> = Omit<T, K> & NullableProps<Pick<T, K>>;
 
 export type WithNonNullKeys<T, K extends keyof T> = {
   [key in keyof T]: key extends K ? NonNull<T[key]> : T[key];
 };
 
-export type ArrayElement<T extends ReadonlyArray<unknown>> =
-  T extends ReadonlyArray<infer R> ? R : never;
+export type ArrayElement<T extends ReadonlyArray<unknown>> = T extends ReadonlyArray<infer R> ? R : never;
 
 export type OmitRefType<T> = Omit<T, ' $refType'>;
 
-export type SubsetPartial<T, K extends keyof T> = Omit<T, K> &
-  Partial<Pick<T, K>>;
+export type SubsetPartial<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
+
+export type AnyObject = Record<string, any>;

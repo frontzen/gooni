@@ -17,7 +17,7 @@ jobs:
           node-version: '16'
           cache: 'yarn'
       - run: yarn install
-      - run: yarn deduplicate:check
+      - run: yarn dedupe --check
       - run: yarn prepublishOnly
       - name: Publish to Chromatic
         uses: chromaui/action@v1

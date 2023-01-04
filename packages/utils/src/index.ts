@@ -10,5 +10,6 @@
  */
 
 export * from './js/general.util';
+export * from './js/object.util';
 export { product } from './js/product';
 export * from './types/type.utils';

@@ -1,5 +1,5 @@
 {
-  "name": "@front.zen/react",
+  "name": "@front.zen/data-service",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"
@@ -19,13 +19,17 @@
     "type-check": "yarn run -T tsc"
   },
   "devDependencies": {
-    "@front.zen/utils": "^1.0.0"
+    "@front.zen/utils": "^1.0.0",
+    "@tanstack/react-query": "4.*",
+    "axios": "^1.1.3",
+    "ts-essentials": "^9.3.0"
   },
   "peerDependencies": {
+    "@tanstack/react-query": "4.*",
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0"
   },
   "dependencies": {
-    "@react-stately/utils": "^3.2.1"
+    "@front.zen/react": "^1.0.0"
   }
 }
