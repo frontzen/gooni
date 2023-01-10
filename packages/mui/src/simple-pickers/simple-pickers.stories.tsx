@@ -1,26 +1,21 @@
+import { Meta, Story } from '@storybook/react';
+import React, { useState } from 'react';
+import { calendarDecorator } from 'src/_storybook/calendarDecorator';
 import {
   DatePicker as DatePickerComponent,
   DateTimePicker as DateTimePickerComponent,
   TimePicker as TimePickerComponent,
-} from '@front.zen/mui';
-import { Meta, Story } from '@storybook/react';
-import React, { useState } from 'react';
-import { calendarDecorator } from 'src/@storybook/decorators';
+} from '..';
 
 export default {
   title: 'Pickers/Simple Pickers',
   decorators: [calendarDecorator()],
 } as Meta;
 
-type PickerComponentTypes =
-  | typeof DatePickerComponent
-  | typeof DateTimePickerComponent
-  | typeof TimePickerComponent;
+type PickerComponentTypes = typeof DatePickerComponent | typeof DateTimePickerComponent | typeof TimePickerComponent;
 
 const templateFactory = <P extends PickerComponentTypes>(Picker: P) =>
-  function WrappedTemplate(
-    args: Omit<React.ComponentProps<P>, 'value' | 'onChange'>,
-  ) {
+  function WrappedTemplate(args: Omit<React.ComponentProps<P>, 'value' | 'onChange'>) {
     const [value, setDateValue] = useState<Date | null>(null);
 
     return (
@@ -38,9 +33,7 @@ DatePicker.argTypes = {
   },
 };
 
-export const DateTimePicker: Story = templateFactory(
-  DateTimePickerComponent,
-).bind({});
+export const DateTimePicker: Story = templateFactory(DateTimePickerComponent).bind({});
 DateTimePicker.argTypes = {
   multiLocale: {
     control: {

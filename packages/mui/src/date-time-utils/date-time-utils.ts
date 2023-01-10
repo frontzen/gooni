@@ -7,7 +7,7 @@ import { RangeInputLabels } from 'src/shared/pickers';
 import { TimeRange } from 'src/shared/pickers/types';
 
 class DateFnsJalaliAdapter extends DateFnsJalaliAdapterBase {
-  public getWeekdays = () => {
+  public override getWeekdays = () => {
     const now = new Date();
     return DateFnsJalali.eachDayOfInterval({
       start: DateFnsJalali.startOfWeek(now, { locale: this.locale }),
@@ -15,7 +15,7 @@ class DateFnsJalaliAdapter extends DateFnsJalaliAdapterBase {
     }).map((day) => this.formatByString(day, 'EEEEE'));
   };
 
-  public formatByString = (date: Date, formatString: string) => {
+  public override formatByString = (date: Date, formatString: string) => {
     return this.formatNumber(
       DateFnsJalali.format(date, formatString, { locale: this.locale }),
     );

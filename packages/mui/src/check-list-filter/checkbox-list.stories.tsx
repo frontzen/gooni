@@ -1,8 +1,10 @@
-import { CheckboxList, PxCheckListFilter, SelectOption } from '@front.zen/mui';
 import { Box, Button } from '@mui/material';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
+import { CheckboxList } from './check-list-box';
+import { SelectOption } from './package-types';
+import { PxCheckListFilter } from './px-check-list-filter';
 
 export default {
   title: 'Check List Filter',

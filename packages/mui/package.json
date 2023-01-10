@@ -1,28 +1,28 @@
 {
   "name": "@front.zen/mui",
   "version": "1.0.0",
-  "publishConfig": {
-    "access": "public"
-  },
   "license": "MIT",
-  "main": "dist/index.common.js",
-  "module": "dist/index.module.js",
-  "typings": "dist/index.d.ts",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "scripts": {
-    "format": "prettier --ignore-path ../../.prettierignore --config ../../.prettierrc --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "format:check": "prettier --ignore-path ../../.prettierignore --config ../../.prettierrc --check \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "lint": "eslint --max-warnings=0 \"**/*.{js,jsx,ts,tsx}\"",
-    "dev": "vite build --mode=development --watch",
-    "build": "vite build",
-    "test": "vitest --run",
-    "type-check": "yarn run -T tsc",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "chromatic": "chromatic --exit-zero-on-changes"
+    "dev": "yarn run -T vite build --mode=development --watch",
+    "build": "yarn run -T vite build && yarn build:copy",
+    "build:copy": "node ../../scripts/copyFiles.mjs",
+    "test": "yarn run -T vitest --run",
+    "type-check": "yarn run -T tsc"
+  },
+  "exports": {
+    ".": {
+      "default": "./src"
+    }
+  },
+  "module": "./src/index.ts",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "publishConfig": {
+    "directory": "dist",
+    "access": "public"
   },
   "peerDependencies": {
     "@emotion/react": "^11.9.0",
@@ -48,12 +48,10 @@
     "@storybook/preset-create-react-app": "^4.1.1",
     "@storybook/react": "^6.5.5",
     "@types/react-resize-detector": "^6.1.0",
-    "chromatic": "^6.5.4",
     "happy-dom": "^6.0.2",
     "jest-environment-jsdom": "^27.0.6",
     "jest-mock-extended": "^2.0.4",
     "popper.js": "1.16.1",
-    "react-scripts": "5.0.0",
     "resize-observer-polyfill": "^1.5.1",
     "stylis-plugin-rtl": "^2.1.1"
   },

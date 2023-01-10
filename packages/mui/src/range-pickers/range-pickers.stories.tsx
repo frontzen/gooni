@@ -1,13 +1,13 @@
+import { Paper, Typography } from '@mui/material';
+import { Meta, Story } from '@storybook/react';
+import { Fragment, useState } from 'react';
+import { calendarDecorator } from 'src/_storybook/calendarDecorator';
 import {
   DateRangePicker as DateRangePickerComponent,
   DateTimeRangePicker as DateTimeRangePickerComponent,
   TimeRange,
   TimeRangePicker as TimeRangePickerComponent,
-} from '@front.zen/mui';
-import { Paper, Typography } from '@mui/material';
-import { Meta, Story } from '@storybook/react';
-import { Fragment, useState } from 'react';
-import { calendarDecorator } from 'src/@storybook/decorators';
+} from '..';
 
 export default {
   title: 'Pickers/Range Pickers',
@@ -29,9 +29,7 @@ type RangePickerComponentTypes =
   | typeof TimeRangePickerComponent;
 
 const templateFactory = <P extends RangePickerComponentTypes>(RangePicker: P) =>
-  function WrappedTemplate(
-    args: Omit<React.ComponentProps<P>, 'value' | 'onChange'>,
-  ) {
+  function WrappedTemplate(args: Omit<React.ComponentProps<P>, 'value' | 'onChange'>) {
     const [value, onChange] = useState<TimeRange>({ to: null, from: null });
 
     return (
@@ -43,22 +41,16 @@ const templateFactory = <P extends RangePickerComponentTypes>(RangePicker: P) =>
 
         <Paper style={{ width: 400, margin: 32, padding: 16 }}>
           <Typography variant="body1">From time:</Typography>
-          <Typography variant="body2">
-            {value.from ? value.from.toISOString() : <br />}
-          </Typography>
+          <Typography variant="body2">{value.from ? value.from.toISOString() : <br />}</Typography>
           <br />
           <Typography variant="body1">To time:</Typography>
-          <Typography variant="body2">
-            {value.to ? value.to.toISOString() : <br />}
-          </Typography>
+          <Typography variant="body2">{value.to ? value.to.toISOString() : <br />}</Typography>
         </Paper>
       </Fragment>
     );
   };
 
-export const DateRangePicker: Story = templateFactory(
-  DateRangePickerComponent,
-).bind({});
+export const DateRangePicker: Story = templateFactory(DateRangePickerComponent).bind({});
 DateRangePicker.argTypes = {
   multiLocale: {
     control: {
@@ -67,9 +59,7 @@ DateRangePicker.argTypes = {
   },
 };
 
-export const DateTimeRangePicker: Story = templateFactory(
-  DateTimeRangePickerComponent,
-).bind({});
+export const DateTimeRangePicker: Story = templateFactory(DateTimeRangePickerComponent).bind({});
 DateTimeRangePicker.argTypes = {
   multiLocale: {
     control: {
@@ -78,6 +68,4 @@ DateTimeRangePicker.argTypes = {
   },
 };
 
-export const TimeRangePicker: Story = templateFactory(
-  TimeRangePickerComponent,
-).bind({});
+export const TimeRangePicker: Story = templateFactory(TimeRangePickerComponent).bind({});

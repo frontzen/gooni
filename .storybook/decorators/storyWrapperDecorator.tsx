@@ -1,6 +1,7 @@
 import { Paper, PaperProps } from '@mui/material';
 import { DecoratorFunction } from '@storybook/addons';
 import { StoryFnReactReturnType } from '@storybook/react/dist/ts3.9/client/preview/types';
+import React from 'react';
 
 export const storyWrapperDecorator =
   (style?: PaperProps['style']): DecoratorFunction<StoryFnReactReturnType> =>
