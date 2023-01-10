@@ -1,22 +1,29 @@
 {
   "name": "@front.zen/utils",
   "version": "1.0.0",
-  "publishConfig": {
-    "access": "public"
-  },
   "license": "MIT",
-  "main": "dist/index.common.js",
-  "module": "dist/index.module.js",
-  "typings": "dist/index.d.ts",
   "files": [
     "dist",
     "src"
   ],
   "scripts": {
     "dev": "yarn run -T vite build --mode=development --watch",
-    "build": "yarn run -T vite build",
+    "build": "yarn run -T vite build && yarn build:copy",
+    "build:copy": "node ../../scripts/copyFiles.mjs",
     "test": "yarn run -T vitest --run",
     "type-check": "yarn run -T tsc"
+  },
+  "exports": {
+    ".": {
+      "default": "./src"
+    }
+  },
+  "module": "./src/index.ts",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "publishConfig": {
+    "directory": "dist",
+    "access": "public"
   },
   "devDependencies": {
     "@types/ramda": "^0.27.62",

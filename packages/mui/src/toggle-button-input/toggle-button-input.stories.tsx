@@ -1,28 +1,9 @@
-import {
-  CustomTextFieldProps,
-  ToggleButton,
-  ToggleButtonInput,
-} from '@front.zen/mui';
-import {
-  Box,
-  Button,
-  Divider,
-  Grid,
-  outlinedInputClasses,
-  TextField,
-  Typography,
-} from '@mui/material';
+import { Box, Button, Divider, Grid, outlinedInputClasses, TextField, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 import { action } from '@storybook/addon-actions';
 import { Meta } from '@storybook/react';
-import React, {
-  Fragment,
-  KeyboardEvent,
-  useCallback,
-  useRef,
-  useState,
-} from 'react';
-import { storyWrapperDecorator } from 'src/@storybook/decorators';
+import React, { Fragment, KeyboardEvent, useCallback, useRef, useState } from 'react';
+import { CustomTextFieldProps, ToggleButton, ToggleButtonInput } from '..';
 
 const LeftInput = styled(TextField)({
   width: '50%',
@@ -68,7 +49,6 @@ const getLabel = (type: Type | null) => {
 
 export default {
   title: 'Toggle Button Input',
-  decorators: [storyWrapperDecorator()],
 } as Meta;
 
 export const Primary = () => {
@@ -79,12 +59,7 @@ export const Primary = () => {
 
   return (
     <Fragment>
-      <ToggleButtonInput
-        color="primary"
-        value={value}
-        onChange={setValue}
-        label={getLabel(value.type)}
-      >
+      <ToggleButtonInput color="primary" value={value} onChange={setValue} label={getLabel(value.type)}>
         <ToggleButton title="Item1" value={Type.ITEM1}>
           Item1
         </ToggleButton>
@@ -110,12 +85,7 @@ export const Secondary = () => {
 
   return (
     <Fragment>
-      <ToggleButtonInput
-        color="secondary"
-        value={value}
-        onChange={setValue}
-        label={getLabel(value.type)}
-      >
+      <ToggleButtonInput color="secondary" value={value} onChange={setValue} label={getLabel(value.type)}>
         <ToggleButton title="Item1" value={Type.ITEM1}>
           Item1
         </ToggleButton>
@@ -147,9 +117,7 @@ export const Error = () => {
         onChange={setValue}
         error={error}
         label={getLabel(value.type)}
-        helperText={
-          error && 'An unexpected error has occurred. Please try again later.'
-        }
+        helperText={error && 'An unexpected error has occurred. Please try again later.'}
       >
         <ToggleButton title="Item1" value={Type.ITEM1}>
           Item1
@@ -164,15 +132,8 @@ export const Error = () => {
         </ToggleButton>
         <Divider orientation="vertical" />
       </ToggleButtonInput>
-      <Typography style={{ marginTop: 24 }}>
-        By clicking on the button below, toggle error.
-      </Typography>
-      <Button
-        size="small"
-        variant="outlined"
-        onClick={() => setError((error) => !error)}
-        style={{ marginTop: 8 }}
-      >
+      <Typography style={{ marginTop: 24 }}>By clicking on the button below, toggle error.</Typography>
+      <Button size="small" variant="outlined" onClick={() => setError((error) => !error)} style={{ marginTop: 8 }}>
         Click
       </Button>
     </Fragment>
@@ -188,12 +149,7 @@ export const Disabled = () => {
 
   return (
     <Fragment>
-      <ToggleButtonInput
-        value={value}
-        onChange={setValue}
-        disabled={disabled}
-        label={getLabel(value.type)}
-      >
+      <ToggleButtonInput value={value} onChange={setValue} disabled={disabled} label={getLabel(value.type)}>
         <ToggleButton title="Item1" value={Type.ITEM1}>
           Item1
         </ToggleButton>
@@ -207,9 +163,7 @@ export const Disabled = () => {
         </ToggleButton>
         <Divider orientation="vertical" />
       </ToggleButtonInput>
-      <Typography style={{ marginTop: 24 }}>
-        By clicking on the button below, toggle disabled.
-      </Typography>
+      <Typography style={{ marginTop: 24 }}>By clicking on the button below, toggle disabled.</Typography>
       <Button
         size="small"
         variant="outlined"
@@ -234,10 +188,7 @@ export const ArrayOfInputs = () => {
   const ref4 = useRef(null);
 
   const handleKeyDown =
-    (
-      prevRef?: React.RefObject<HTMLInputElement>,
-      nextRef?: React.RefObject<HTMLInputElement>,
-    ) =>
+    (prevRef?: React.RefObject<HTMLInputElement>, nextRef?: React.RefObject<HTMLInputElement>) =>
     (event: KeyboardEvent<HTMLDivElement>) => {
       if (event.key === 'ArrowDown') {
         nextRef?.current?.focus();
@@ -342,31 +293,14 @@ export const MarginNormal = () => {
 
   return (
     <Fragment>
-      <ToggleButtonInput
-        value={value}
-        onChange={setValue}
-        label={getLabel(value.type)}
-        margin="normal"
-      >
-        <ToggleButton
-          onClick={action('Item1 Selected')}
-          title="Item1"
-          value={Type.ITEM1}
-        >
+      <ToggleButtonInput value={value} onChange={setValue} label={getLabel(value.type)} margin="normal">
+        <ToggleButton onClick={action('Item1 Selected')} title="Item1" value={Type.ITEM1}>
           Item1
         </ToggleButton>
-        <ToggleButton
-          onClick={action('Item2 Selected')}
-          title="Item2"
-          value={Type.ITEM2}
-        >
+        <ToggleButton onClick={action('Item2 Selected')} title="Item2" value={Type.ITEM2}>
           Item2
         </ToggleButton>
-        <ToggleButton
-          onClick={action('Item3 Selected')}
-          title="Item3"
-          value={Type.ITEM3}
-        >
+        <ToggleButton onClick={action('Item3 Selected')} title="Item3" value={Type.ITEM3}>
           Item3
         </ToggleButton>
       </ToggleButtonInput>
@@ -382,31 +316,14 @@ export const MarginDense = () => {
 
   return (
     <Fragment>
-      <ToggleButtonInput
-        value={value}
-        onChange={setValue}
-        label={getLabel(value.type)}
-        margin="dense"
-      >
-        <ToggleButton
-          onClick={action('Item1 Selected')}
-          title="Item1"
-          value={Type.ITEM1}
-        >
+      <ToggleButtonInput value={value} onChange={setValue} label={getLabel(value.type)} margin="dense">
+        <ToggleButton onClick={action('Item1 Selected')} title="Item1" value={Type.ITEM1}>
           Item1
         </ToggleButton>
-        <ToggleButton
-          onClick={action('Item2 Selected')}
-          title="Item2"
-          value={Type.ITEM2}
-        >
+        <ToggleButton onClick={action('Item2 Selected')} title="Item2" value={Type.ITEM2}>
           Item2
         </ToggleButton>
-        <ToggleButton
-          onClick={action('Item3 Selected')}
-          title="Item3"
-          value={Type.ITEM3}
-        >
+        <ToggleButton onClick={action('Item3 Selected')} title="Item3" value={Type.ITEM3}>
           Item3
         </ToggleButton>
       </ToggleButtonInput>
@@ -422,31 +339,14 @@ export const SizeSmall = () => {
 
   return (
     <Fragment>
-      <ToggleButtonInput
-        value={value}
-        onChange={setValue}
-        label={getLabel(value.type)}
-        size="small"
-      >
-        <ToggleButton
-          onClick={action('Item1 Selected')}
-          title="Item1"
-          value={Type.ITEM1}
-        >
+      <ToggleButtonInput value={value} onChange={setValue} label={getLabel(value.type)} size="small">
+        <ToggleButton onClick={action('Item1 Selected')} title="Item1" value={Type.ITEM1}>
           Item1
         </ToggleButton>
-        <ToggleButton
-          onClick={action('Item2 Selected')}
-          title="Item2"
-          value={Type.ITEM2}
-        >
+        <ToggleButton onClick={action('Item2 Selected')} title="Item2" value={Type.ITEM2}>
           Item2
         </ToggleButton>
-        <ToggleButton
-          onClick={action('Item3 Selected')}
-          title="Item3"
-          value={Type.ITEM3}
-        >
+        <ToggleButton onClick={action('Item3 Selected')} title="Item3" value={Type.ITEM3}>
           Item3
         </ToggleButton>
       </ToggleButtonInput>
@@ -468,12 +368,7 @@ export const FullWidth = () => {
   return (
     <>
       <Box width={680}>
-        <ToggleButtonInput
-          value={value}
-          onChange={setValue}
-          label={getLabel(value.type)}
-          fullWidth={fullWidth}
-        >
+        <ToggleButtonInput value={value} onChange={setValue} label={getLabel(value.type)} fullWidth={fullWidth}>
           <ToggleButton title="Item1" value={Type.ITEM1}>
             Item1
           </ToggleButton>
@@ -492,8 +387,6 @@ export const FullWidth = () => {
   );
 };
 
-FullWidth.decorators = [storyWrapperDecorator({ width: 680 })];
-
 export const CustomTextField = () => {
   const [value, setValue] = useState<{ value: string; type: Type | null }>({
     value: '',
@@ -509,25 +402,13 @@ export const CustomTextField = () => {
         TextFieldComponent={value.type === Type.ITEM1 ? CustomInput : undefined}
         color="primary"
       >
-        <ToggleButton
-          onClick={action('Item1 Selected')}
-          title="Item1"
-          value={Type.ITEM1}
-        >
+        <ToggleButton onClick={action('Item1 Selected')} title="Item1" value={Type.ITEM1}>
           Item1
         </ToggleButton>
-        <ToggleButton
-          onClick={action('Item2 Selected')}
-          title="Item2"
-          value={Type.ITEM2}
-        >
+        <ToggleButton onClick={action('Item2 Selected')} title="Item2" value={Type.ITEM2}>
           Item2
         </ToggleButton>
-        <ToggleButton
-          onClick={action('Item3 Selected')}
-          title="Item3"
-          value={Type.ITEM3}
-        >
+        <ToggleButton onClick={action('Item3 Selected')} title="Item3" value={Type.ITEM3}>
           Item3
         </ToggleButton>
       </ToggleButtonInput>
@@ -539,27 +420,13 @@ enum Inputs {
   LEFT = 'left',
 }
 const CustomInput = (props: CustomTextFieldProps) => {
-  const {
-    inputRef,
-    classes,
-    InputProps,
-    InputLabelProps,
-    onFocus,
-    onBlur,
-    onChange,
-    value,
-    ...others
-  } = props;
+  const { inputRef, classes, InputProps, InputLabelProps, onFocus, onBlur, onChange, value, ...others } = props;
   const { root, ...otherClasses } = classes ?? {};
   const [focused, setFocused] = React.useState<Inputs | null>(null);
   const inputs = (value as string).split(':');
-  const [rightValue, leftValue]: string[] =
-    inputs.length === 2 ? inputs : ['', ''];
+  const [rightValue, leftValue]: string[] = inputs.length === 2 ? inputs : ['', ''];
   const handleFocus = React.useCallback(
-    (
-      e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
-      which: Inputs,
-    ) => {
+    (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>, which: Inputs) => {
       setFocused(which);
       onFocus?.(e);
     },
@@ -573,9 +440,7 @@ const CustomInput = (props: CustomTextFieldProps) => {
     [onBlur],
   );
   const handleChange = React.useCallback(
-    ({
-      target: { value },
-    }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    ({ target: { value } }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const newValue = `${focused === Inputs.RIGHT ? value : rightValue}:${
         focused === Inputs.LEFT ? value : leftValue
       }`;
@@ -590,24 +455,17 @@ const CustomInput = (props: CustomTextFieldProps) => {
         {...others}
         variant="outlined"
         classes={{ ...otherClasses }}
-        onFocus={(
-          e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
-        ) => handleFocus(e, Inputs.RIGHT)}
+        onFocus={(e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => handleFocus(e, Inputs.RIGHT)}
         onBlur={handleBlur}
         onChange={handleChange}
         InputProps={{
           ...InputProps,
-          notched:
-            !!rightValue || (focused === Inputs.RIGHT && InputProps?.notched),
+          notched: !!rightValue || (focused === Inputs.RIGHT && InputProps?.notched),
         }}
         InputLabelProps={{
           ...InputLabelProps,
-          focused:
-            !!rightValue ||
-            (focused === Inputs.RIGHT && InputLabelProps?.focused),
-          shrink:
-            !!rightValue ||
-            (focused === Inputs.RIGHT && InputLabelProps?.shrink),
+          focused: !!rightValue || (focused === Inputs.RIGHT && InputLabelProps?.focused),
+          shrink: !!rightValue || (focused === Inputs.RIGHT && InputLabelProps?.shrink),
         }}
         value={rightValue}
       />
@@ -627,23 +485,17 @@ const CustomInput = (props: CustomTextFieldProps) => {
         {...others}
         variant="outlined"
         classes={{ ...otherClasses }}
-        onFocus={(
-          e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
-        ) => handleFocus(e, Inputs.LEFT)}
+        onFocus={(e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => handleFocus(e, Inputs.LEFT)}
         onBlur={handleBlur}
         onChange={handleChange}
         InputProps={{
           ...InputProps,
-          notched:
-            !!leftValue || (focused === Inputs.LEFT && InputProps?.notched),
+          notched: !!leftValue || (focused === Inputs.LEFT && InputProps?.notched),
         }}
         InputLabelProps={{
           ...InputLabelProps,
-          focused:
-            !!leftValue ||
-            (focused === Inputs.LEFT && InputLabelProps?.focused),
-          shrink:
-            !!leftValue || (focused === Inputs.LEFT && InputLabelProps?.shrink),
+          focused: !!leftValue || (focused === Inputs.LEFT && InputLabelProps?.focused),
+          shrink: !!leftValue || (focused === Inputs.LEFT && InputLabelProps?.shrink),
         }}
         value={leftValue}
       />

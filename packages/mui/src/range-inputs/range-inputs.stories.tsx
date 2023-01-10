@@ -1,12 +1,12 @@
+import { Meta, Story } from '@storybook/react';
+import { useState } from 'react';
+import { calendarDecorator } from 'src/_storybook/calendarDecorator';
 import {
   DateRangeInput as DateRangeInputComponent,
   DateTimeRangeInput as DateTimeRangeInputComponent,
   TimeRange,
   TimeRangeInput as TimeRangeInputComponent,
-} from '@front.zen/mui';
-import { Meta, Story } from '@storybook/react';
-import { useState } from 'react';
-import { calendarDecorator } from 'src/@storybook/decorators';
+} from '..';
 
 export default {
   title: 'Pickers/Range Inputs',
@@ -28,9 +28,7 @@ type RangeInputComponentTypes =
   | typeof TimeRangeInputComponent;
 
 const templateFactory = <P extends RangeInputComponentTypes>(RangeInput: P) =>
-  function WrappedTemplate(
-    args: Omit<React.ComponentProps<P>, 'value' | 'onChange'>,
-  ) {
+  function WrappedTemplate(args: Omit<React.ComponentProps<P>, 'value' | 'onChange'>) {
     const [value, onChange] = useState<TimeRange>({ to: null, from: null });
 
     return (
@@ -39,9 +37,7 @@ const templateFactory = <P extends RangeInputComponentTypes>(RangeInput: P) =>
     );
   };
 
-export const DateRangeInput: Story = templateFactory(
-  DateRangeInputComponent,
-).bind({});
+export const DateRangeInput: Story = templateFactory(DateRangeInputComponent).bind({});
 DateRangeInput.argTypes = {
   multiLocale: {
     control: {
@@ -50,9 +46,7 @@ DateRangeInput.argTypes = {
   },
 };
 
-export const DateTimeRangeInput: Story = templateFactory(
-  DateTimeRangeInputComponent,
-).bind({});
+export const DateTimeRangeInput: Story = templateFactory(DateTimeRangeInputComponent).bind({});
 DateTimeRangeInput.argTypes = {
   multiLocale: {
     control: {
@@ -61,6 +55,4 @@ DateTimeRangeInput.argTypes = {
   },
 };
 
-export const TimeRangeInput: Story = templateFactory(
-  TimeRangeInputComponent,
-).bind({});
+export const TimeRangeInput: Story = templateFactory(TimeRangeInputComponent).bind({});

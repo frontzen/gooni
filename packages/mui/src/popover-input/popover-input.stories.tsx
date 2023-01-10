@@ -1,12 +1,12 @@
+import { Box, Button, Paper } from '@mui/material';
+import { Meta } from '@storybook/react';
+import { useCallback, useState } from 'react';
 import {
   ClickAwayClose,
   PopoverButton as PxPopoverButton,
   PopoverInput as PxPopoverInput,
   usePopoverInputContext,
-} from '@front.zen/mui';
-import { Box, Button, Paper } from '@mui/material';
-import { Meta } from '@storybook/react';
-import { useCallback, useState } from 'react';
+} from '..';
 
 const Sample = () => {
   const setOpen = usePopoverInputContext();
@@ -61,12 +61,7 @@ export const FullWidth = () => {
           </ClickAwayClose>
         </PxPopoverInput>
       </Box>
-      <Button
-        onClick={handleClick}
-        variant="contained"
-        color="primary"
-        style={{ marginTop: 32 }}
-      >
+      <Button onClick={handleClick} variant="contained" color="primary" style={{ marginTop: 32 }}>
         Toggle fullWidth
       </Button>
     </>
